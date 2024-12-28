@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Memes</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="imagenes/guino.png">
+</head>
+
+<body>
+  <header>
+    <h1>Generador de Memes</h1>
+    <nav>
+      <a href="#" id="image-link">Imagen</a>
+      <a href="#" id="text-link">Texto</a>
+      <a href="#" id="toggle-light-mode">Fondo</a>
+
+    </nav>
+  </header>
+
+  <main>
+    <div id="image-container" style="background-color: #FFFFFF; width: 500px; height: 500px; position: relative;">
+      <section class="preview-container">
+        <div class="meme-preview">
+
+          <img id="meme-image" src="" alt="Vista previa del meme"
+            style="max-width: 100%; height: 100%; object-fit: contain; mix-blend-mode: normal;">
+
+          <div class="meme-text" id="top-text"
+            style="position: absolute; top: 0.1px; left: 50%; transform: translateX(-50%); text-align: center; color: white !important; font-size: 36px; text-shadow: 2px 2px 4px black;background-color: black !important;">
+            TOP TEXT</div>
+
+          <div class="meme-text" id="bottom-text"
+            style="position: absolute; bottom: 0.1px; left: 50%; transform: translateX(-50%); text-align: center; color: white !important; font-size: 36px; text-shadow: 2px 2px 4px black;background-color: black !important">
+            BOTTOM TEXT</div>
+        </div>
+      </section>
+
+    </div>
+    <div class="panel" id="image-panel">
+      <h2>IMAGEN</h2>
+
+      <label for="image-url">URL</label>
+      <input type="text" id="image-url" placeholder="Pega la URL de la imagen">
+
+      <label for="background-color">FONDO</label>
+      <div class="background-options">
+        <input type="color" id="background-color" value="#FFFFFF">
+        <select id="background-option">
+          <option value="normal">Ninguno</option>
+          <option value="lighten">Aclarar</option>
+          <option value="darken">Oscurecer</option>
+          <option value="difference">Diferencia</option>
+          <option value="luminosity">Luminosidad</option>
+          <option value="multiply">Multiplicar</option>
+        </select>
+      </div>
+
+      <h3>FILTROS</h3>
+      <label for="brightness">BRILLO</label>
+      <input type="range" id="brightness" min="50" max="200" value="100" style="padding: 0px !important;">
+
+      <label for="opacity">OPACIDAD</label>
+      <input type="range" id="opacity" min="0" max="100" value="100" style="padding: 0px !important;">
+
+      <label for="contrast">CONTRASTE</label>
+      <input type="range" id="contrast" min="50" max="200" value="100" style="padding: 0px !important;">
+
+      <label for="blur">DESENFOQUE</label>
+      <input type="range" id="blur" min="0" max="10" value="0" style="padding: 0px !important;">
+
+      <label for="grayscale">ESCALA DE GRISES</label>
+      <input type="range" id="grayscale" min="0" max="100" value="0" style="padding: 0px !important;">
+
+      <label for="sepia">SEPIA</label>
+      <input type="range" id="sepia" min="0" max="100" value="0" style="padding: 0px !important;">
+
+      <label for="hue-rotate">HUE</label>
+      <input type="range" id="hue-rotate" min="0" max="360" value="0" style="padding: 0px !important;">
+
+      <label for="saturate">SATURACIÓN</label>
+      <input type="range" id="saturate" min="0" max="300" value="100" style="padding: 0px !important;">
+
+      <label for="invert">NEGATIVO</label>
+      <input type="range" id="invert" min="0" max="100" value="0" style="padding: 0px !important;">
+
+      <button id="reset-filters">Reestablecer filtros</button>
+    </div>
+
+    <div class="panel hidden" id="text-panel">
+      <h2>TEXTO</h2>
+
+      <label for="new-top-text">TEXTO SUPERIOR</label>
+      <input type="text" id="new-top-text" placeholder="TOP TEXT">
+
+      <div>
+        <input type="checkbox" id="hide-top-text">
+        <label for="hide-top-text">Sin texto superior</label>
+      </div>
+
+      <label for="new-bottom-text">TEXTO INFERIOR</label>
+      <input type="text" id="new-bottom-text" placeholder="BOTTOM TEXT">
+
+      <div>
+        <input type="checkbox" id="hide-bottom-text">
+        <label for="hide-bottom-text">Sin texto inferior</label>
+      </div>
+
+      <label for="font-select">FUENTE</label>
+      <select id="font-select">
+        <option value="Impact" selected>Impact</option>
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
+        <option value="Times New Roman">Times New Roman</option>
+      </select>
+
+      <label for="font-size">TAMAÑO</label>
+      <input type="number" id="font-size" min="10" max="100" value="36">
+
+      <label for="color-picker">COLOR DEL TEXTO</label>
+      <input type="color" id="color-picker" value="#FFFFFF">
+
+      <label for="bg-color">FONDO DEL TEXTO</label>
+      <input type="color" id="bg-color" value="#000000">
+
+      <div>
+        <input type="checkbox" id="transparent-bg">
+        <label for="transparent-bg">Fondo transparente</label>
+      </div>
+
+      <label for="spacing">ESPACIADO</label>
+      <input type="number" id="spacing" min="0" max="50" value="1">
+
+      <label for="line-height">INTERLINEADO</label>
+      <select id="line-height">
+        <option value="1.0">1.0</option>
+        <option value="1.2" selected>1.2</option>
+        <option value="1.5">1.5</option>
+        <option value="2.0">2.0</option>
+      </select>
+
+      <button id="apply-text">Aplicar Texto</button>
+    </div>
+
+  </main>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <button id="download-meme">Descargar Meme</button>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <script src="main.js"></script>
+</body>
+</html>
